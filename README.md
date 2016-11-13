@@ -1,5 +1,8 @@
-# imgView: interactive view images with the (predictive) probability
-*zero dependancy*
+# imgView: View images with the probability (**zero dependancy**)
+
+# Preview an interactive page [here](http://duducheng.github.io/imgView/)
+![screenshot](screenshot.png "screenshot")
+
 Tested for Python 2 (not tested for Python 3).
 
 If you want to use it in Python 3, you can directly use imgView.js, or write your own wrapper.
@@ -27,7 +30,7 @@ viewer.clear() # kill the subprocess, and clean the cache.
 
 # [imgView.js](imgView.js/)
 Angular and Echarts frontend source.
-You can develop your own frontend. If you just want to use the python API, you can even delete this folder. 
+You can develop your own frontend. If you just want to use the python API, you can even delete this folder.
 
 # LICENSE
 MIT
