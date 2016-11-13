@@ -1,0 +1,30 @@
+{
+  "name": "ng-scaffolding",
+  "version": "1.0.0",
+  "description": "A scaffolding for Angular",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "ngScaffolding",
+    "ng-caffolding"
+  ],
+  "authors": [
+    "Jiancheng"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
+    "angular-resource": "^1.5.3",
+    "echarts": "^3.2.3"
+  }
+}
