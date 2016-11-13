@@ -1,7 +1,10 @@
 # imgView: View images with the probability (**zero dependancy**)
+**Note**: It's a tool to *"view"*, without ability to predict. You should provide the results, maybe from a Deep Neural Networks; and imgView help you show the results.
 
-# Preview an interactive page [here](http://duducheng.github.io/imgView/)
-![screenshot](screenshot.png "screenshot")
+# Preview an interactive page [here](https://duducheng.github.io/imgView/index.html#/)
+<p align="center">
+  <img src="screenshot.png"/>
+</p>
 
 Tested for Python 2 (not tested for Python 3).
 
