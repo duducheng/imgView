@@ -5,13 +5,15 @@ import os
 import shutil
 import subprocess
 import json
+import random
+import time
 
 ASSET = "dist/"
 DATA = "data/"
 CONFIG_FILE = "config.js"
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-data_folder = os.path.join(ROOT, ASSET, DATA)
+
 
 class imgViewer(object):
 
@@ -48,6 +50,11 @@ class imgViewer(object):
         self.__img_dir = img_dir
         self.__img_port = img_port
         self.__cwd = os.getcwd()
+        self.__cleared = False
+        self.__asset = os.path.join(self.__cwd,
+                                    ".cache{}".format(hash(random.random())))
+        shutil.copytree(os.path.join(ROOT, ASSET), self.__asset)
+        print "Created cache at {}".format(self.__asset)
 
         if not jsonfile.endswith(".json"):
             raise ValueError(
@@ -56,43 +63,40 @@ class imgViewer(object):
             raise ValueError("Can't find image root: %s" % img_dir)
         if not os.path.exists(jsonfile):
             jsonfile = os.path.join(
-                ROOT, ASSET, DATA, os.path.split(jsonfile)[-1])
+                self.__asset, DATA, os.path.split(jsonfile)[-1])
             if not os.path.exists(jsonfile):
                 raise ValueError("Can't find json: %s" % jsonfile)
         else:
-            shutil.copy2(jsonfile, os.path.join(ROOT, ASSET, DATA))
+            shutil.copy2(jsonfile, os.path.join(self.__asset, DATA))
         with open(jsonfile) as f:
             json_content = json.load(f)
             category = set(json_content[0].keys()).difference(
                 {'classname', 'path'})
-        with open(os.path.join(ROOT, ASSET, DATA, CONFIG_FILE), "w") as f:
+        with open(os.path.join(self.__asset, DATA, CONFIG_FILE), "w") as f:
             f.write(config4writing(
                 img_port, os.path.split(jsonfile)[-1], category))
 
     def serve(self, port=9000):
+        if self.__cleared:
+            raise ValueError("Cleared")
         start_simple_server = "python -m SimpleHTTPServer {0:d}"
         os.chdir(self.__img_dir)
         self.__img_p = subprocess.Popen(
             start_simple_server.format(self.__img_port))
-        os.chdir(os.path.join(ROOT, ASSET))
+        os.chdir(os.path.join(self.__asset))
         self.__p = subprocess.Popen(start_simple_server.format(port))
         os.chdir(self.__cwd)
         print('Find app running on http://localhost:%s/' % port)
 
-    def remove(self, filename=None):
-        '''
-        If filename is None, remove all.
-        '''
-        # nonlocal data_folder
-        if filename is None:
-            for f in os.listdir(data_folder):
-                os.remove(os.path.join(data_folder, f))
-        else:
-            os.remove(os.path.join(data_folder, filename))
-
-    def kill(self):
+    def clear(self, stupid_wait=0.3):
+        if self.__cleared:
+            print "Cleared."
+            return
         self.__img_p.kill()
         self.__p.kill()
+        time.sleep(stupid_wait)
+        shutil.rmtree(self.__asset)
+        self.__cleared = True
 
 
 def config4writing(img_port, jsonfile, category):

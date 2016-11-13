@@ -8,7 +8,7 @@ Surely, if you want to use it, you should have pandas :)
 import os.path
 import random
 import pandas as pd
-from .viewer import imgViewer, data_folder
+from .viewer import imgViewer
 
 
 def get_json(jsonfile, *args, **kwargs):
@@ -36,14 +36,12 @@ class dfViewer(object):
     Simply view a dataframe given img_dir.
     '''
 
-    def __init__(self, df, img_dir):
-        path = os.path.join(data_folder,
-                                "{}.json".format(hash(random.random())))
+    def __init__(self, df, img_dir, port=9001, img_port=4169):
+        path = "{}.json".format(hash(random.random()))
         to_json(df, path)
-        self.__access = os.path.split(path)[-1]
-        self.__viewer = imgViewer(img_dir, self.__access)
-        self.__viewer.serve()
+        self.__viewer = imgViewer(img_dir, path, img_port)
+        os.remove(path)
+        self.__viewer.serve(port)
 
     def clear(self):
-        self.__viewer.kill()
-        self.__viewer.remove(self.__access)
+        self.__viewer.clear()
