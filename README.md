@@ -19,8 +19,7 @@ img_dir='../test_imgs/'
 viewer = imgViewer(img_dir=img_dir,jsonfile=jsonfile)
 viewer.serve()
 # Find app running on http://localhost:9000/
-viewer.kill() # kill the subprocess
-viewer.remove() # clean the cache
+viewer.clear() # kill the subprocess and clean the cache
 ```
 or use the dataframe API from pd_utils
 ```python
