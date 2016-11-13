@@ -1,4 +1,5 @@
-# imgView: an interactive visual tool to view the image with the (predictive) probability with zero dependancy.
+# imgView: interactive view images with the (predictive) probability
+*zero dependancy*
 Tested for Python 2 (not tested for Python 3).
 
 If you want to use it in Python 3, you can directly use imgView.js, or write your own wrapper.
@@ -23,3 +24,10 @@ viewer = dfViewer(test_df, img_dir="../test_imgs/")
 # Find app running on http://localhost:9000/
 viewer.clear() # kill the subprocess, and clean the cache.
 ```
+
+# [imgView.js](imgView.js/)
+Angular and Echarts frontend source.
+You can develop your own frontend. If you just want to use the python API, you can even delete this folder. 
+
+# LICENSE
+MIT
