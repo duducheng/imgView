@@ -1,0 +1,1 @@
+Example for imgView. Same as imgView.js preview.
