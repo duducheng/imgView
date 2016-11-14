@@ -1,5 +1,5 @@
 # coding: utf-8
-__auther__ = "duducheng"
+__author__ = "duducheng"
 
 from viewer import imgViewer
 
