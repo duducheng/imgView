@@ -23,7 +23,7 @@ To use imgView is super easy, find an example notebook in example/.
 ```python
 from imgView import imgViewer
 jsonfile = 'cn_test.json'
-img_dir = '../test_imgs/'
+img_dir = 'example/test_imgs/'
 
 viewer = imgViewer(img_dir=img_dir,jsonfile=jsonfile)
 viewer.serve()
@@ -34,7 +34,7 @@ or use the dataframe API from pd_utils
 ```python
 from imgView.pd_utils import dfViewer
 # test_df = pd.DataFrame(...)
-viewer = dfViewer(test_df, img_dir="../test_imgs/")
+viewer = dfViewer(test_df, img_dir="example/test_imgs/")
 # Find app running on http://localhost:9000/
 viewer.clear() # kill the subprocess, and clean the cache.
 ```
