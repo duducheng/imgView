@@ -1,8 +1,7 @@
 /node_modules
-/dist
+/asset
 /.tmp
 /.sass-cache
 /bower_components
 /app/bower_components
 /app/test_imgs
-/data

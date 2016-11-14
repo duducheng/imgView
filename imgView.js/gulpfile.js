@@ -18,7 +18,7 @@ var gulp = require('gulp'),
 
 // Clean
 gulp.task('clean', function() {
-    return del(['dist/**/*']);
+    return del(['asset/**/*']);
 });
 
 gulp.task('cleanBower', function() {
@@ -56,30 +56,30 @@ gulp.task('usemin', ['clean', 'jshint'], function() {
         .pipe(usemin({
             css: [minifycss(), rev()],
             js: [ngannotate(), uglify(), rev()]
-        })).pipe(gulp.dest('dist/')),
-        gulp.src('./app/data/*').pipe(gulp.dest('dist/data/'));
+        })).pipe(gulp.dest('asset/')),
+        gulp.src('./app/data/*').pipe(gulp.dest('asset/data/'));
 });
 
 // Images
 gulp.task('imagemin', ['clean'], function() {
-    return del(['dist/images']),
+    return del(['asset/images']),
         gulp.src('app/images/**/*')
         .pipe(cache(imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
         })))
-        .pipe(gulp.dest('dist/images')),
+        .pipe(gulp.dest('asset/images')),
         gulp.src('app/*.ico')
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('asset'))
 });
 
 // // Copyfonts
 // gulp.task('copyfonts', ['clean'], function() {
 //   gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
-//     .pipe(gulp.dest('./dist/fonts'));
-//   gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
-//     .pipe(gulp.dest('./dist/fonts'));
+//     .pipe(gulp.dest('./asset/fonts'));
+//   gulp.src('./bower_components/bootstrap/asset/fonts/**/*.{ttf,woff,eof,svg}*')
+//     .pipe(gulp.dest('./asset/fonts'));
 // });
 
 // build task
@@ -93,18 +93,18 @@ gulp.task('browser-sync', ['build'], function() {
         'app/images/**/*.png',
         'app/scripts/**/*.js',
         'app/data/*',
-        'dist/**/*'
+        'asset/**/*'
     ];
 
     browserSync.init(files, {
         server: {
-            baseDir: "dist",
+            baseDir: "asset",
             index: "index.html",
         },
         port: 35142,
     });
-    // Watch any files in dist/, reload on change
-    gulp.watch(['dist/**']).on('change', browserSync.reload);
+    // Watch any files in asset/, reload on change
+    gulp.watch(['asset/**']).on('change', browserSync.reload);
 });
 
 // Watch and serve
@@ -118,11 +118,11 @@ gulp.task('serve', ['browser-sync'], function() {
 gulp.task('default', ['build']);
 
 gulp.task('cleanHome', function() {
-  return del(['../dist/**'], {
+  return del(['../imgView/asset/**'], {
     force: true
   });
 });
 
 gulp.task('deploy', ['cleanHome'], function() {
-  gulp.src(['dist/**']).pipe(gulp.dest('../dist/')); //bugs here... can not merge it into one task...(missing files)
+  gulp.src(['asset/**']).pipe(gulp.dest('../imgView/asset/')); //bugs here... can not merge it into one task...(missing files)
 });

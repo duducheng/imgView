@@ -8,7 +8,7 @@ import json
 import random
 import time
 
-ASSET = "dist/"
+ASSET = "asset/"
 DATA = "data/"
 CONFIG_FILE = "config.js"
 

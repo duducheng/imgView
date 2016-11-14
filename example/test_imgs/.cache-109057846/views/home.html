@@ -1,0 +1,24 @@
+<div class="container" ng-keydown="onKeydown($event)">
+    <div class="row row-content">
+        <div class="col-xs-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" ng-class="{active:isSelected($index)}" ng-repeat="category in ['All'].concat(labels)">
+                    <a ng-click="select($index)" role="tab">
+                        <big>{{category}}<span ng-if='tab==$index'>: {{id%num+1}} / {{num}}</span></big>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="row">
+                    <div class="col-xs-6" align="center">
+                        <img class='img-responsive' ng-src="{{img}}" alt="some_animal" height="400px"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <h2><b>True label:</b> {{classname}} | <b>Prediction:</b> {{maxItem}}</h2>
+                        <div id="echarts" style="width: 100%; height:400px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

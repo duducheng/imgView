@@ -1,3 +1,7 @@
 *.pyc
 .ipynb_checkpoints
-dev.*
+example/.ipynb_checkpoints
+example/*.cmd
+build/
+dist/
+*-info/

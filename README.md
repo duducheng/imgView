@@ -10,11 +10,20 @@ Tested for Python 2 (not tested for Python 3).
 
 If you want to use it in Python 3, you can directly use imgView.js, or write your own wrapper.
 
+# Setup
+```shell
+git clone https://github.com/duducheng/imgView
+cd imgView
+python setup.py install
+```
+
 # Usage
+To use imgView is super easy, find an example notebook in example/.
+
 ```python
 from imgView import imgViewer
-jsonfile='cn_test.json'
-img_dir='../test_imgs/'
+jsonfile = 'cn_test.json'
+img_dir = '../test_imgs/'
 
 viewer = imgViewer(img_dir=img_dir,jsonfile=jsonfile)
 viewer.serve()
