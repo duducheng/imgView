@@ -1,4 +1,4 @@
-# imgView: View Your Deep Conv Nets' Prediction (**zero dependancy**)
+# imgView: View ConvNets' Results in lines of Python with **zero dependancy**
 **Note**: It's a tool to *"view"*, without ability to predict. You should provide the results, maybe from a Deep Neural Networks; and imgView help you show the results.
 
 # Preview an interactive page [here](https://duducheng.github.io/imgView/index.html#/)

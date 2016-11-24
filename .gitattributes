@@ -1,4 +1,5 @@
 **/asset/* linguist-documentation
+**/gulpfile.js linguist-documentation
 
 # Auto detect text files and perform LF normalization
 * text=auto
