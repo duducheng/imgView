@@ -1,4 +1,4 @@
-imgView/* linguist-documentation
+**/asset/* linguist-documentation
 
 # Auto detect text files and perform LF normalization
 * text=auto
